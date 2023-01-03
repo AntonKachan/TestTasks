@@ -103,6 +103,8 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.16.3)
+    money (6.16.0)
+      i18n (>= 0.6.4, <= 2)
     msgpack (1.6.0)
     net-imap (0.3.4)
       date
@@ -122,6 +124,8 @@ GEM
       method_source (~> 1.0)
     puma (5.6.5)
       nio4r (~> 2.0)
+    rabl (0.16.1)
+      activesupport (>= 2.3.14)
     racc (1.6.2)
     rack (2.2.5)
     rack-test (2.0.2)
@@ -208,9 +212,11 @@ DEPENDENCIES
   factory_bot_rails
   importmap-rails
   jbuilder
+  money (~> 6.16)
   pg (~> 1.1)
   pry
   puma (~> 5.0)
+  rabl (~> 0.16.1)
   rails (~> 7.0.4)
   redis (~> 4.0)
   rspec-rails (~> 6.0.0)
