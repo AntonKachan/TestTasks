@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_28_172007) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_02_172944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "price_promotion_strategies", force: :cascade do |t|
+    t.string "type"
+    t.float "amount"
+    t.integer "quantity_to_buy"
+    t.integer "quantity_to_discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "code"
@@ -20,6 +29,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_172007) do
     t.integer "price_cents"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "price_promotion_strategy_id"
+    t.index ["price_promotion_strategy_id"], name: "index_products_on_price_promotion_strategy_id"
   end
 
+  add_foreign_key "products", "price_promotion_strategies"
 end
