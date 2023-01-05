@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ProductsController, type: :controller do
   render_views
 
-  describe "#index" do
+  describe "GET #index" do
     subject { get :index }
 
     let(:products) { create_list(:product, 3, price_cents: 1123) }

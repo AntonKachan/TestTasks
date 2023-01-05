@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# frozen_string_literal: true
+
+puts "Create PricePromotionStrategies"
+green_tea_promotion = PricePromotionStrategies::PercentDiscount.create(amount: 100, quantity_to_buy: 1, quantity_to_discount: 1)
+strawberry_promotion = PricePromotionStrategies::CentsDiscount.create(amount: 50, quantity_to_buy: 3)
+coffee_promotion = PricePromotionStrategies::PercentDiscount.create(amount: 33.3333, quantity_to_buy: 3)
+
+puts "Create Products"
+Product.create(code: 'GR1', name: 'Green Tea', price_cents: 311, price_promotion_strategy: green_tea_promotion)
+Product.create(code: 'SR1', name: 'Strawberries', price_cents: 500, price_promotion_strategy: strawberry_promotion)
+Product.create(code: 'CF1', name: 'Coffee', price_cents: 1123, price_promotion_strategy: coffee_promotion)
